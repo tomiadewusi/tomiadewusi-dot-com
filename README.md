@@ -1,17 +1,32 @@
-# Quartz v5
+# tomiadewusi.com
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+This is my personal knowledge repository — a long-lived public technical notebook. Markdown is the canonical representation of what I know; this repository is the source of truth, and [tomiadewusi.com](https://tomiadewusi.com) (built with [Quartz](https://quartz.jzhao.xyz/)) is a compiled view of it.
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+## Structure
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+Content lives under `content/`, organized into a small, consistent taxonomy:
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+| Folder | Purpose |
+| --- | --- |
+| `concepts/` | Single, coherent ideas — one note per identifiable question |
+| `notes/` | Looser working notes that haven't crystallized into concepts yet |
+| `projects/` | Project-specific notes and logs (e.g. MonteJax) |
+| `decisions/` | Design decisions — context, alternatives considered, consequences |
+| `experiments/` | Observations from experiments, kept separate from conclusions |
+| `reading/` | Reading notes — an author's claims kept separate from my interpretation |
+| `essays/` | Polished, stable-maturity arguments |
+| `logs/` | Dated, chronological entries |
+| `maps/` | Curated indexes tying related notes together |
 
-## Sponsors
+Every note carries frontmatter (`title`, `description`, `type`, `topics`, `projects`, `created`, `updated`, `aliases`, `references`, `maturity`) so both humans and AI agents can interpret it consistently. See [`content/maps/maturity.md`](content/maps/maturity.md) for the maturity stages (`seed` → `developing` → `stable` → `deprecated`) — nothing is deleted just because my thinking evolved.
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+Notes are heavily interlinked with wiki-style links (authored edges), on top of which Graphify is used to surface inferred relationships.
+
+## Local development
+
+```bash
+npm ci
+npx quartz build --serve
+```
+
+Deploys to GitHub Pages automatically on push to `main` (see `.github/workflows/deploy-pages.yml`).
